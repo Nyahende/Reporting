@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesticide Inspection Form</title>
+</head>
+<body>
+    <h2>{{ form.instance.id|default:"New" }} Pesticide Inspection</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'pesticide_inspection_list' %}">Back to List</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspection Details</title>
+</head>
+<body>
+    <h2>Inspection Details</h2>
+    
+    <h3>General Information</h3>
+    <p><strong>Inspection Date:</strong> {{ inspection.inspection_date }}</p>
+    <p><strong>Inspection Time:</strong> {{ inspection.inspection_time }}</p>
+    <p><strong>Location:</strong> {{ inspection.get_location_display }}</p>
+    <p><strong>Inspector Name:</strong> {{ inspection.inspector_name }}</p>
+    
+    <h3>Details of Inspected Items</h3>
+    <p><strong>Item Description:</strong> {{ inspection.item_description }}</p>
+    <p><strong>Origin:</strong> {{ inspection.origin }}</p>
+    <p><strong>Quantity:</strong> {{ inspection.quantity }}</p>
+    <p><strong>Condition of Items:</strong> {{ inspection.condition_of_items }}</p>
+    
+    <h3>Inspection Findings</h3>
+    <p><strong>Pests/Diseases Detected:</strong> {{ inspection.pests_diseases_detected }}</p>
+    <p><strong>Laboratory Analysis Required:</strong> {{ inspection.laboratory_analysis_required }}</p>
+    <p><strong>Sample Collected:</strong> {{ inspection.sample_collected }}</p>
+    <p><strong>Quarantine Required:</strong> {{ inspection.quarantine_required }}</p>
+    <p><strong>Items Seized:</strong> {{ inspection.items_seized }}</p>
+    
+    <h3>Actions Taken</h3>
+    <p><strong>Immediate Actions:</strong> {{ inspection.immediate_actions }}</p>
+    <p><strong>Follow-up Required:</strong> {{ inspection.follow_up_required }}</p>
+    <p><strong>Follow-up Date:</strong> {{ inspection.follow_up_date }}</p>
+    
+    <h3>Additional Observations</h3>
+    <p><strong>Challenges Encountered:</strong> {{ inspection.challenges_encountered }}</p>
+    <p><strong>Additional Notes:</strong> {{ inspection.additional_notes }}</p>
+    <p><strong>Recommendations for Improvement:</strong> {{ inspection.recommendations_for_improvement }}</p>
+    
+    <a href="{% url 'inspection_list' %}">Back to Inspection List</a>
+</body>
+</html>

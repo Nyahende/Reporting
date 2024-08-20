@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Visit Report Detail</title>
+</head>
+<body>
+    
+
+  <h1>Field Visit Report: {{ report.visit_date }}</h1>
+  <p><strong>Date:</strong> {{ report.visit_date }}</p>
+  <p><strong>Time:</strong> {{ report.visit_time_start }} - {{ report.visit_time_end }}</p>
+  <p><strong>Location:</strong> {{ report.location }}</p>
+  <p><strong>Purpose of Visit:</strong> {{ report.purpose_of_visit }}</p>
+  <p><strong>Visitors:</strong> {{ report.visitors }}</p>
+  <p><strong>Field Contact Person:</strong> {{ report.field_contact_person }}</p>
+  <p><strong>Contact Phone:</strong> {{ report.field_contact_person_phone }}</p>
+
+  <h3>Site Details</h3>
+  <p><strong>Description:</strong> {{ report.site_description }}</p>
+  <p><strong>Weather Conditions:</strong> {{ report.weather_conditions }}</p>
+  <p><strong>Accessibility:</strong> {{ report.site_accessibility }}</p>
+
+  <h3>Observations</h3>
+  <p><strong>General Observations:</strong> {{ report.general_observations }}</p>
+  <p><strong>Plant Health Status:</strong> {{ report.plant_health_status }}</p>
+  <p><strong>Pest Activity:</strong> {{ report.pest_activity }}</p>
+  <p><strong>Soil Conditions:</strong> {{ report.soil_conditions }}</p>
+  <p><strong>Infrastructure Condition:</strong> {{ report.infrastructure_condition }}</p>
+
+  <h3>Findings and Issues</h3>
+  <p><strong>Problems Identified:</strong> {{ report.problems_identified }}</p>
+  <p><strong>Recommendations:</strong> {{ report.recommendations }}</p>
+
+  <h3>Actions Taken</h3>
+  <p><strong>Immediate Actions:</strong> {{ report.immediate_actions }}</p>
+  <p><strong>Follow-Up Actions:</strong> {{ report.follow_up_actions }}</p>
+
+  <h3>Attachments</h3>
+  <p><strong>Photos:</strong></p>
+  {% if report.photos.all %}
+    <ul>
+      {% for photo in report.photos.all %}
+        <li><img src="{{ photo.file.url }}" alt="{{ photo.description }}" style="max-width: 300px; max-height: 200px;"></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    No photos uploaded.
+  {% endif %}
+  <p><strong>Maps:</strong></p>
+  {% if report.maps.all %}
+    <ul>
+      {% for map in report.maps.all %}
+        <li><a href="{{ map.file.url }}">{{ map.description }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    No maps uploaded.
+  {% endif %}
+
+  <h3>Additional Notes</h3>
+  <p>{{ report.additional_notes }}</p>
+  <h3>Challenges Encountered</h3>
+  <p>{{ report.challenges_encountered }}</p>
+  <h3>Next Steps</h3>
+  <p>{{ report.next_steps }}</p>
+</body>
+</html>

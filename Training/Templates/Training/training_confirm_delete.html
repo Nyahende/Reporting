@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Deletion</title>
+</head>
+<body>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete the training session on {{ training.training_date }} at {{ training.location }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm</button>
+    </form>
+    <a href="{% url 'training_list' %}">Cancel</a>
+</body>
+</html>

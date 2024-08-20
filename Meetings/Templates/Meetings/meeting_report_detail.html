@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Details</title>
+</head>
+<body>
+  
+
+  <h1>Meeting Report: {{ report.title }}</h1>
+  <p><strong>Date:</strong> {{ report.meeting_date }}</p>
+  <p><strong>Time:</strong> {{ report.meeting_time_start }} - {{ report.meeting_time_end }}</p>
+  <p><strong>Location:</strong> {{ report.location }}</p>
+  <p><strong>Organizer:</strong> {{ report.organizer }}</p>
+  <p><strong>Attendees:</strong> {{ report.attendees }}</p>
+
+  <h3>Agenda</h3>
+  <p><strong>Agenda Items:</strong> {{ report.agenda_items }}</p>
+  <p><strong>Presenter/Lead:</strong> {{ report.presenter_lead }}</p>
+
+  <h3>Discussion Details</h3>
+  <p><strong>Key Points Discussed:</strong> {{ report.key_points_discussed }}</p>
+  <p><strong>Decisions Made:</strong> {{ report.decisions_made }}</p>
+  <p><strong>Action Items:</strong> {{ report.action_items }}</p>
+
+  <h3>Attachments</h3>
+  <p><strong>Documents:</strong></p>
+  {% if documents %}
+    <ul>
+      {% for document in documents %}
+        <li><a href="{{ document.file.url }}" target="_blank">{{ document.file.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    No documents uploaded.
+  {% endif %}
+  <p><strong>Links:</strong> {{ report.links }}</p>
+
+  <h3>Follow-Up</h3>
+  <p><strong>Next Meeting:</strong> {{ report.next_meeting }}</p>
+  <p><strong>Additional Notes:</strong> {{ report.additional_notes }}</p>
+
+  <a href="{% url 'meeting_report_list' %}" class="btn btn-secondary">Back to List</a>
+</body>
+</html>

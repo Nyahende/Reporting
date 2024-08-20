@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Training Form</title>
+</head>
+<body>
+    <h2>{{ form.instance.id|default:"New" }} Training</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'training_list' %}">Back to List</a>
+</body>
+</html>

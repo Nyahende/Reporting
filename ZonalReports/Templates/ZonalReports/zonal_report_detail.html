@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zonal Report Detail</title>
+</head>
+<body>
+    <h2>Zonal Report Detail</h2>
+
+    <p><strong>Date:</strong> {{ report.date }}</p>
+    <p><strong>Location:</strong> {{ report.location }}</p>
+    <p><strong>Inspector:</strong> {{ report.created_by.username }}</p>
+
+    <h3>Report Details</h3>
+    <p><strong>Number of Inspectors:</strong> {{ report.number_of_inspectors }}</p>
+    <p><strong>Plant Consignments Certified for Export:</strong> {{ report.certified_for_export }}</p>
+    <!-- Add the rest of your fields here -->
+
+    <h3>Actions</h3>
+    <a href="{% url 'zonal_report_pdf' report.pk %}">Download PDF</a>
+    {% if report.created_by == user %}
+    | <a href="{% url 'zonal_report_update' report.pk %}">Edit</a>
+    | <a href="{% url 'zonal_report_delete' report.pk %}">Delete</a>
+    {% endif %}
+
+    <a href="{% url 'zonal_report_list' %}">Back to List</a>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.pk %}Edit{% else %}New{% endif %} Zonal Report</title>
+</head>
+<body>
+    <h2>{% if form.instance.pk %}Edit{% else %}New{% endif %} Zonal Report</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.pk %}Update{% else %}Submit{% endif %}</button>
+    </form>
+    <a href="{% url 'zonal_report_list' %}">Back to List</a>
+</body>
+</html>

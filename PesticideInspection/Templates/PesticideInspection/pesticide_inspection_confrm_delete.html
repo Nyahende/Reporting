@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Pesticide Inspection</title>
+</head>
+<body>
+    <h2>Are you sure you want to delete this inspection?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'pesticide_inspection_list' %}">No, go back</a>
+</body>
+</html>

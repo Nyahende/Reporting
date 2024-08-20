@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Training Details</title>
+</head>
+<body>
+    <h2>Training Details</h2>
+    <p><strong>Date:</strong> {{ training.training_date }}</p>
+    <p><strong>Duration:</strong> {{ training.training_start_time }} - {{ training.training_end_time }}</p>
+    <p><strong>Trainer:</strong> {{ training.trainer_name }}</p>
+    <p><strong>Location:</strong> {{ training.location }}</p>
+    <p><strong>Type:</strong> {{ training.training_type }}</p>
+    <p><strong>Target Audience:</strong> {{ training.target_audience }}</p>
+    <p><strong>Topics Covered:</strong> {{ training.training_topics }}</p>
+    <p><strong>Materials Used:</strong> {{ training.training_materials }}</p>
+    <p><strong>Methods Used:</strong> {{ training.training_methods }}</p>
+    <p><strong>Skills & Knowledge Gained:</strong> {{ training.skills_knowledge_gained }}</p>
+    <p><strong>Assessments Conducted:</strong> {{ training.assessments_conducted }}</p>
+    <p><strong>Participant Feedback:</strong> {{ training.participant_feedback }}</p>
+    <p><strong>Effectiveness Evaluation:</strong> {{ training.effectiveness_evaluation }}</p>
+    <p><strong>Post-Training Follow-Up:</strong> {{ training.post_training_follow_up }}</p>
+    <p><strong>Training Impact:</strong> {{ training.training_impact }}</p>
+    <p><strong>Additional Notes:</strong> {{ training.additional_notes }}</p>
+    <p><strong>Challenges Encountered:</strong> {{ training.challenges_encountered }}</p>
+    <p><strong>Recommendations:</strong> {{ training.recommendations }}</p>
+    <a href="{% url 'training_list' %}">Back to List</a>
+</body>
+</html>

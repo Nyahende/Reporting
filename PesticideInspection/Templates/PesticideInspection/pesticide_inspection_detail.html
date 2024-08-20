@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspection Details</title>
+</head>
+<body>
+    <h2>Inspection Details</h2>
+    <h3>General Information</h3>
+    <p><strong>Inspection Date:</strong> {{ inspection.inspection_date }}</p>
+    <p><strong>Inspection Time:</strong> {{ inspection.inspection_time }}</p>
+    <p><strong>Location:</strong> {{ inspection.location }}</p>
+    <p><strong>Inspector Name:</strong> {{ inspection.inspector_name }}</p>
+    
+    <h3>Seller Details</h3>
+    <p><strong>Seller Name:</strong> {{ inspection.seller_name }}</p>
+    <p><strong>Seller ID:</strong> {{ inspection.seller_id }}</p>
+    <p><strong>License Number:</strong> {{ inspection.license_number }}</p>
+    <p><strong>License Expiry Date:</strong> {{ inspection.license_expiry_date }}</p>
+    <p><strong>Contact Information:</strong> {{ inspection.contact_information }}</p>
+    
+    <h3>Inventory Inspection</h3>
+    <p><strong>Product List:</strong> {{ inspection.product_list }}</p>
+    
+    <h3>Compliance Check</h3>
+    <p><strong>License Display:</strong> {{ inspection.license_display }}</p>
+    <p><strong>Compliance with Regulations:</strong> {{ inspection.compliance_with_regulations }}</p>
+    <p><strong>Restricted Products:</strong> {{ inspection.restricted_products }}</p>
+    <p><strong>Safety Measures:</strong> {{ inspection.safety_measures }}</p>
+    <p><strong>Documentation:</strong> {{ inspection.documentation }}</p>
+    
+    <h3>Inspection Findings</h3>
+    <p><strong>Violations Detected:</strong> {{ inspection.violations_detected }}</p>
+    <p><strong>Non-Compliant Products:</strong> {{ inspection.non_compliant_products }}</p>
+    <p><strong>Corrective Actions Required:</strong> {{ inspection.corrective_actions_required }}</p>
+    <p><strong>Follow-up Inspection Needed:</strong> {{ inspection.follow_up_inspection_needed }}</p>
+    <p><strong>Follow-up Date:</strong> {{ inspection.follow_up_date }}</p>
+    
+    <h3>Actions Taken</h3>
+    <p><strong>Immediate Actions:</strong> {{ inspection.immediate_actions }}</p>
+    <p><strong>Penalties Issued:</strong> {{ inspection.penalties_issued }}</p>
+    <p><strong>Recommendations:</strong> {{ inspection.recommendations }}</p>
+    
+    <h3>Supporting Documents</h3>
+    <p><strong>Photographic Evidence:</strong> {% if inspection.photographic_evidence %}<img src="{{ inspection.photographic_evidence.url }}" alt="Photographic Evidence">{% endif %}</p>
+    <p><strong>Product Samples:</strong> {% if inspection.product_samples %}<a href="{{ inspection.product_samples.url }}">Download</a>{% endif %}</p>
+    <p><strong>Correspondence:</strong> {% if inspection.correspondence %}<a href="{{ inspection.correspondence.url }}">Download</a>{% endif %}</p>
+    
+    <h3>Additional Observations</h3>
+    <p><strong>Challenges Encountered:</strong> {{ inspection.challenges_encountered }}</p>
+    <p><strong>Additional Notes:</strong> {{ inspection.additional_notes }}</p>
+    <p><strong>Recommendations for Improvement:</strong> {{ inspection.recommendations_for_improvement }}</p>
+    
+    <a href="{% url 'pesticide_inspection_update' inspection.id %}">Edit</a> |
+    <a href="{% url 'pesticide_inspection_list' %}">Back to List</a>
+</body>
+</html>

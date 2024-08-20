@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting List</title>
+</head>
+<body>
+    
+
+  <h1>Meeting Reports</h1>
+  <a href="{% url 'meeting_report_create' %}" class="btn btn-primary">Create New Report</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in reports %}
+        <tr>
+          <td>{{ report.title }}</td>
+          <td>{{ report.meeting_date }}</td>
+          <td>{{ report.location }}</td>
+          <td><a href="{% url 'meeting_report_detail' report.pk %}">View</a></td>
+          <td><a href="{% url 'delete_meeting_report' report.pk %}">Delete</a></td>
+          <td><a href="{% url 'update_meeting_report' report.pk %}">Update</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

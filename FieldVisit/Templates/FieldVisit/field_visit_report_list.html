@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Visit Report List</title>
+</head>
+<body>
+    
+
+  <h1>Field Visit Reports</h1>
+  <a href="{% url 'field_visit_report_create' %}" class="btn btn-primary">Create New Report</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Purpose</th>
+        <th>Visitors</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in reports %}
+        <tr>
+          <td>{{ report.visit_date }}</td>
+          <td>{{ report.location }}</td>
+          <td>{{ report.purpose_of_visit }}</td>
+          <td>{{ report.visitors }}</td>
+          <td>
+            <a href="{% url 'field_visit_report_detail' report.pk %}" class="btn btn-info">View</a>
+            <td><a href="{% url 'delete_field_visit' report.pk %}">Delete</a></td>
+            <td><a href="{% url 'update_field_visit' report.pk %}">Update</a></td>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

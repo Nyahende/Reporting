@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspection List</title>
+</head>
+<body>
+    <h2>Plant Health Inspections</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Inspector</th>
+            <th>Actions</th>
+        </tr>
+        {% for inspection in inspections %}
+        <tr>
+            <td>{{ inspection.inspection_date }}</td>
+            <td>{{ inspection.location }}</td>
+            <td>{{ inspection.inspector_name }}</td>
+            <td>
+                <a href="{% url 'inspection_detail' inspection.id %}">View</a> |
+                <a href="{% url 'inspection_update' inspection.id %}">Edit</a> |
+                <a href="{% url 'inspection_delete' inspection.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'inspection_create' %}">Add New Inspection</a>
+</body>
+</html>
