@@ -3,7 +3,7 @@ from .models import ZonalReport
 from .forms import ZonalReportForm
 from django.http import HttpResponse
 from django.template.loader import get_template
-from weasyprint import HTML
+# from weasyprint import HTML
 import xlsxwriter
 import io
 import matplotlib.pyplot as plt
@@ -17,15 +17,15 @@ def zonal_report_create(request):
             return redirect('zonal_report_list')
     else:
         form = ZonalReportForm()
-    return render(request, 'zonal_report_form.html', {'form': form})
+    return render(request, 'ZonalReports/zonal_report_form.html', {'form': form})
 
 def zonal_report_list(request):
     reports = ZonalReport.objects.all()
-    return render(request, 'zonal_report_list.html', {'reports': reports})
+    return render(request, 'ZonalReports/zonal_report_list.html', {'reports': reports})
 
 def zonal_report_detail(request, pk):
     report = get_object_or_404(ZonalReport, pk=pk)
-    return render(request, 'zonal_report_detail.html', {'report': report})
+    return render(request, 'ZonalReports/zonal_report_detail.html', {'report': report})
 
 def zonal_report_filter(request):
     filter_type = request.GET.get('filter', 'daily')
@@ -45,14 +45,14 @@ def zonal_report_filter(request):
         end_date = today
 
     reports = ZonalReport.objects.filter(date__range=[start_date, end_date])
-    return render(request, 'zonal_report_list.html', {'reports': reports, 'filter_type': filter_type})
+    return render(request, 'ZonalReports/zonal_report_list.html', {'reports': reports, 'filter_type': filter_type})
 
-def generate_pdf(request, pk):
-    report = get_object_or_404(ZonalReport, pk=pk)
-    template = get_template('zonal_report_pdf.html')
-    html = template.render({'report': report})
-    pdf = HTML(string=html).write_pdf()
-    return HttpResponse(pdf, content_type='application/pdf')
+# def generate_pdf(request, pk):
+#     report = get_object_or_404(ZonalReport, pk=pk)
+#     template = get_template('zonal_report_pdf.html')
+#     html = template.render({'report': report})
+#     pdf = HTML(string=html).write_pdf()
+#     return HttpResponse(pdf, content_type='application/pdf')
 
 def generate_excel(request, pk):
     report = get_object_or_404(ZonalReport, pk=pk)
@@ -104,7 +104,7 @@ def zonal_report_update(request, pk):
     else:
         form = ZonalReportForm(instance=report)
     
-    return render(request, 'zonal_reports/zonal_report_form.html', {'form': form})
+    return render(request, 'ZonalReports/zonal_report_form.html', {'form': form})
 
 
 def zonal_report_delete(request, pk):
@@ -116,5 +116,5 @@ def zonal_report_delete(request, pk):
         report.delete()
         return redirect('zonal_report_list')
     
-    return render(request, 'zonal_reports/zonal_report_confirm_delete.html', {'report': report})
+    return render(request, 'ZonalReports/zonal_report_confirm_delete.html', {'report': report})
 

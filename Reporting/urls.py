@@ -25,4 +25,6 @@ urlpatterns = [
     path('plantInspection/', include('PlantInspection.urls')),
     path('PesticideInspection/', include('PesticideInspection.urls')),
     path('Training/', include('Training.urls')),
+    path('ZonalReports/', include('ZonalReports.urls')),
+    path('Equipments/', include('Equipments.urls')),
 ]

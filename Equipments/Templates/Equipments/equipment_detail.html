@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Details</title>
+</head>
+<body>
+    <h2>Equipment Details</h2>
+
+    <p><strong>Name:</strong> {{ equipment.name }}</p>
+    <p><strong>Make:</strong> {{ equipment.make }}</p>
+    <p><strong>Model:</strong> {{ equipment.model }}</p>
+    <p><strong>Serial Number:</strong> {{ equipment.serial_number }}</p>
+    <p><strong>Location:</strong> {{ equipment.location }}</p>
+    <p><strong>Purpose:</strong> {{ equipment.purpose }}</p>
+    <p><strong>Frequency of Use:</strong> {{ equipment.frequency_of_use }}</p>
+    <p><strong>Users:</strong> {{ equipment.users }}</p>
+    <p><strong>Training Records:</strong> {{ equipment.training_records }}</p>
+    <p><strong>Condition:</strong> {{ equipment.condition }}</p>
+    <p><strong>Performance:</strong> {{ equipment.performance }}</p>
+    <p><strong>Capacity:</strong> {{ equipment.capacity }}</p>
+    <p><strong>Compliance:</strong> {{ equipment.compliance }}</p>
+    <p><strong>Routine Maintenance:</strong> {{ equipment.routine_maintenance }}</p>
+    <p><strong>Preventive Maintenance:</strong> {{ equipment.preventive_maintenance }}</p>
+    <p><strong>Corrective Maintenance:</strong> {{ equipment.corrective_maintenance }}</p>
+    <p><strong>Service Contracts:</strong> {{ equipment.service_contracts }}</p>
+    <p><strong>Maintenance Logs:</strong> {{ equipment.maintenance_logs }}</p>
+    <p><strong>Calibration Records:</strong> {{ equipment.calibration_records }}</p>
+    <p><strong>Inspection Reports:</strong> {{ equipment.inspection_reports }}</p>
+    <p><strong>Repair Records:</strong> {{ equipment.repair_records }}</p>
+    <p><strong>Regulatory Compliance:</strong> {{ equipment.regulatory_compliance }}</p>
+    <p><strong>Manufacturer Guidelines:</strong> {{ equipment.manufacturer_guidelines }}</p>
+    <p><strong>Performance Metrics:</strong> {{ equipment.performance_metrics }}</p>
+    <p><strong>Downtime Records:</strong> {{ equipment.downtime_records }}</p>
+    <p><strong>Upgrade Recommendations:</strong> {{ equipment.upgrade_recommendations }}</p>
+    <p><strong>Training Needs:</strong> {{ equipment.training_needs }}</p>
+    <p><strong>Risk Factors:</strong> {{ equipment.risk_factors }}</p>
+    <p><strong>Mitigation Measures:</strong> {{ equipment.mitigation_measures }}</p>
+    <p><strong>Maintenance Costs:</strong> {{ equipment.maintenance_costs }}</p>
+    <p><strong>Budget Allocation:</strong> {{ equipment.budget_allocation }}</p>
+
+    <a href="{% url 'equipment_update' equipment.pk %}">Edit</a> |
+    <a href="{% url 'equipment_list' %}">Back to List</a>
+</body>
+</html>

@@ -7,16 +7,66 @@
     <h2>Zonal Report Detail</h2>
 
     <p><strong>Date:</strong> {{ report.date }}</p>
-    <p><strong>Location:</strong> {{ report.location }}</p>
+    <p><strong>Station:</strong> {{ report.get_station_display }}</p>
     <p><strong>Inspector:</strong> {{ report.created_by.username }}</p>
 
-    <h3>Report Details</h3>
+    <h3>Inspector Information</h3>
     <p><strong>Number of Inspectors:</strong> {{ report.number_of_inspectors }}</p>
-    <p><strong>Plant Consignments Certified for Export:</strong> {{ report.certified_for_export }}</p>
-    <!-- Add the rest of your fields here -->
+
+    <h3>Export Certification</h3>
+    <p><strong>Plant Consignments Certified:</strong> {{ report.plant_consignments_certified }}</p>
+    <p><strong>Phytosanitary Certificates Issued:</strong> {{ report.phytosanitary_certificates_issued }}</p>
+    <p><strong>Consignments Not Meeting Export Requirements:</strong> {{ report.consignments_not_meeting_export_requirements }}</p>
+    <p><strong>Export Non-Compliance Measures:</strong> {{ report.export_non_compliance_measures }}</p>
+
+    <h3>Import Certification</h3>
+    <p><strong>Plant Import Permits Issued:</strong> {{ report.plant_import_permits_issued }}</p>
+    <p><strong>Imported Plant Consignments Verified:</strong> {{ report.imported_plant_consignments_verified }}</p>
+    <p><strong>Imported Consignments on Transit:</strong> {{ report.imported_consignments_on_transit }}</p>
+    <p><strong>Consignments Not Meeting Import Requirements:</strong> {{ report.consignments_not_meeting_import_requirements }}</p>
+    <p><strong>Import Non-Compliance Measures:</strong> {{ report.import_non_compliance_measures }}</p>
+    <p><strong>Import Challenges:</strong> {{ report.import_challenges }}</p>
+
+    <h3>Pesticide Inspection</h3>
+    <p><strong>Pesticides Consignments Received and Inspected:</strong> {{ report.pesticides_consignments_received_inspected }}</p>
+    <p><strong>Pesticides Consignments Not Meeting Requirements:</strong> {{ report.pesticides_consignments_not_meeting_requirements }}</p>
+    <p><strong>Pesticide Non-Compliance Measures:</strong> {{ report.pesticide_non_compliance_measures }}</p>
+    <p><strong>Pesticide Challenges:</strong> {{ report.pesticide_challenges }}</p>
+
+    <h3>Field Visits & Surveillance</h3>
+    <p><strong>Field Visits:</strong> {{ report.field_visits }}</p>
+    <p><strong>Surveillance Work:</strong> {{ report.surveillance_work }}</p>
+    <p><strong>Key Pests and Diseases Observed:</strong> {{ report.key_pests_diseases_observed }}</p>
+    <p><strong>Geographical Coverage of Pests:</strong> {{ report.geographical_coverage_of_pests }}</p>
+    <p><strong>Preliminary Measures Taken:</strong> {{ report.preliminary_measures_taken }}</p>
+
+    <h3>Crop Inspection</h3>
+    <p><strong>Fields/Crops Inspected:</strong> {{ report.fields_crops_inspected }}</p>
+    <p><strong>Crop Non-Compliance Observed:</strong> {{ report.crop_non_compliance_observed }}</p>
+    <p><strong>Crop Non-Compliance Measures:</strong> {{ report.crop_non_compliance_measures }}</p>
+
+    <h3>Pesticide Business Inspections</h3>
+    <p><strong>Pesticide Businesses Inspected:</strong> {{ report.pesticide_businesses_inspected }}</p>
+    <p><strong>Pesticide Business Non-Compliance:</strong> {{ report.pesticide_business_non_compliance }}</p>
+
+    <h3>Stakeholder Engagement</h3>
+    <p><strong>Stakeholder Groups Met:</strong> {{ report.stakeholder_groups_met }}</p>
+    <p><strong>Stakeholder Concerns:</strong> {{ report.stakeholder_concerns }}</p>
+
+    <h3>Field Work & Community Meetings</h3>
+    <p><strong>Other Field Work Activities:</strong> {{ report.other_field_work_activities }}</p>
+    <p><strong>Community Meetings Attended:</strong> {{ report.community_meetings_attended }}</p>
+    <p><strong>Community Concerns:</strong> {{ report.community_concerns }}</p>
+
+    <h3>On-call Attendances</h3>
+    <p><strong>On-call Plant Health:</strong> {{ report.on_call_plant_health }}</p>
+    <p><strong>On-call Pesticide Management:</strong> {{ report.on_call_pesticide_management }}</p>
+
+    <h3>Additional Information</h3>
+    <p><strong>Other Important Matters:</strong> {{ report.other_important_matters }}</p>
 
     <h3>Actions</h3>
-    <a href="{% url 'zonal_report_pdf' report.pk %}">Download PDF</a>
+    <a href="#">Download PDF</a>
     {% if report.created_by == user %}
     | <a href="{% url 'zonal_report_update' report.pk %}">Edit</a>
     | <a href="{% url 'zonal_report_delete' report.pk %}">Delete</a>

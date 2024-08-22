@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'PlantInspection',
     'PesticideInspection',
     'Training',
+    'ZonalReports',
+    'Equipments',   
 ]
 
 MIDDLEWARE = [

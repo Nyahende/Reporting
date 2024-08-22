@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment List</title>
+</head>
+<body>
+    
+
+  <h2>Equipment List</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Condition</th>
+      <th>Performance</th>
+      <th>Next Maintenance</th>
+      <th>Actions</th>
+    </tr>
+    {% for item in equipment %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.location }}</td>
+      <td>{{ item.condition }}</td>
+      <td>{{ item.performance }}</td>
+      <td>{{ item.preventive_maintenance }}</td>
+      <td>
+        <a href="{% url 'equipment_detail' item.pk %}">Details</a> |
+        <a href="{% url 'equipment_update' item.pk %}">Edit</a> |
+        <a href="{% url 'equipment_delete' item.pk %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'equipment_create' %}">Add New Equipment</a>
+</body>
+</html>
