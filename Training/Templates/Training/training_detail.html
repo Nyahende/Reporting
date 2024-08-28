@@ -1,28 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            color: #007bff;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        h3 {
+            margin-top: 30px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.5em;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+        p strong {
+            color: #007bff;
+            font-weight: 700;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn-container a {
+            margin: 0 15px;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .btn-container a:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .btn-container a {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Training Details</h2>
-    <p><strong>Date:</strong> {{ training.training_date }}</p>
-    <p><strong>Duration:</strong> {{ training.training_start_time }} - {{ training.training_end_time }}</p>
-    <p><strong>Trainer:</strong> {{ training.trainer_name }}</p>
-    <p><strong>Location:</strong> {{ training.location }}</p>
-    <p><strong>Type:</strong> {{ training.training_type }}</p>
-    <p><strong>Target Audience:</strong> {{ training.target_audience }}</p>
-    <p><strong>Topics Covered:</strong> {{ training.training_topics }}</p>
-    <p><strong>Materials Used:</strong> {{ training.training_materials }}</p>
-    <p><strong>Methods Used:</strong> {{ training.training_methods }}</p>
-    <p><strong>Skills & Knowledge Gained:</strong> {{ training.skills_knowledge_gained }}</p>
-    <p><strong>Assessments Conducted:</strong> {{ training.assessments_conducted }}</p>
-    <p><strong>Participant Feedback:</strong> {{ training.participant_feedback }}</p>
-    <p><strong>Effectiveness Evaluation:</strong> {{ training.effectiveness_evaluation }}</p>
-    <p><strong>Post-Training Follow-Up:</strong> {{ training.post_training_follow_up }}</p>
-    <p><strong>Training Impact:</strong> {{ training.training_impact }}</p>
-    <p><strong>Additional Notes:</strong> {{ training.additional_notes }}</p>
-    <p><strong>Challenges Encountered:</strong> {{ training.challenges_encountered }}</p>
-    <p><strong>Recommendations:</strong> {{ training.recommendations }}</p>
-    <a href="{% url 'training_list' %}">Back to List</a>
+    <div class="container">
+        <h2>Training Details</h2>
+        <h3>General Information</h3>
+        <p><strong>Date:</strong> {{ training.training_date }}</p>
+        <p><strong>Duration:</strong> {{ training.training_start_time }} - {{ training.training_end_time }}</p>
+        <p><strong>Trainer:</strong> {{ training.trainer_name }}</p>
+        <p><strong>Location:</strong> {{ training.location }}</p>
+        <p><strong>Type:</strong> {{ training.training_type }}</p>
+        <p><strong>Target Audience:</strong> {{ training.target_audience }}</p>
+        
+        <h3>Training Content</h3>
+        <p><strong>Topics Covered:</strong> {{ training.training_topics }}</p>
+        <p><strong>Materials Used:</strong> {{ training.training_materials }}</p>
+        <p><strong>Methods Used:</strong> {{ training.training_methods }}</p>
+        <p><strong>Skills & Knowledge Gained:</strong> {{ training.skills_knowledge_gained }}</p>
+        <p><strong>Assessments Conducted:</strong> {{ training.assessments_conducted }}</p>
+        
+        <h3>Training Feedback & Evaluation</h3>
+        <p><strong>Participant Feedback:</strong> {{ training.participant_feedback }}</p>
+        <p><strong>Effectiveness Evaluation:</strong> {{ training.effectiveness_evaluation }}</p>
+        <p><strong>Post-Training Follow-Up:</strong> {{ training.post_training_follow_up }}</p>
+        <p><strong>Training Impact:</strong> {{ training.training_impact }}</p>
+        
+        <h3>Challenges & Recommendations</h3>
+        <p><strong>Additional Notes:</strong> {{ training.additional_notes }}</p>
+        <p><strong>Challenges Encountered:</strong> {{ training.challenges_encountered }}</p>
+        <p><strong>Recommendations:</strong> {{ training.recommendations }}</p>
+
+        <div class="btn-container">
+            <a href="{% url 'training_update' training.id %}">Edit</a>
+            <a href="{% url 'training_list' %}">Back to List</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

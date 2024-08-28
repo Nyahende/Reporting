@@ -5,4 +5,5 @@ class PesticideInspectionForm(forms.ModelForm):
     class Meta:
         model = PesticideInspection
         fields = '__all__'
+        
        
