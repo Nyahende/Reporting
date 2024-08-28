@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 
 def meeting_report_list(request):
-    reports = MeetingReport.objects.all()
+    reports = MeetingReport.objects.all().order_by('-meeting_date')
     return render(request, 'Meetings/meeting_report_list.html', {'reports': reports})
 
 def meeting_report_create(request):

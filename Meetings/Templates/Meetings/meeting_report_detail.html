@@ -1,45 +1,130 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meeting Details</title>
+  <!-- Add Google Fonts for a more stylish typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Include Bootstrap CSS for layout and styling -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS for additional styling -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #2c3e50;
+    }
+    .container {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #1abc9c;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      color: #1abc9c;
+    }
+    .content-box {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .content-box p {
+      margin: 0;
+      padding: 8px 0;
+      font-size: 1rem;
+    }
+    .content-box strong {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .btn-secondary {
+      background-color: #1abc9c;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    .btn-secondary:hover {
+      background-color: #16a085;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin-bottom: 8px;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="container">
+    <div class="header">
+      <h1>Meeting Report: {{ report.title }}</h1>
+    </div>
 
-  <h1>Meeting Report: {{ report.title }}</h1>
-  <p><strong>Date:</strong> {{ report.meeting_date }}</p>
-  <p><strong>Time:</strong> {{ report.meeting_time_start }} - {{ report.meeting_time_end }}</p>
-  <p><strong>Location:</strong> {{ report.location }}</p>
-  <p><strong>Organizer:</strong> {{ report.organizer }}</p>
-  <p><strong>Attendees:</strong> {{ report.attendees }}</p>
+    <div class="content-box">
+      <p><strong>Date:</strong> {{ report.meeting_date }}</p>
+      <p><strong>Time:</strong> {{ report.meeting_time_start }} - {{ report.meeting_time_end }}</p>
+      <p><strong>Location:</strong> {{ report.location }}</p>
+      <p><strong>Organizer:</strong> {{ report.organizer }}</p>
+      <p><strong>Attendees:</strong> {{ report.attendees }}</p>
+    </div>
 
-  <h3>Agenda</h3>
-  <p><strong>Agenda Items:</strong> {{ report.agenda_items }}</p>
-  <p><strong>Presenter/Lead:</strong> {{ report.presenter_lead }}</p>
+    <div class="section-title">Agenda</div>
+    <div class="content-box">
+      <p><strong>Agenda Items:</strong> {{ report.agenda_items }}</p>
+      <p><strong>Presenter/Lead:</strong> {{ report.presenter_lead }}</p>
+    </div>
 
-  <h3>Discussion Details</h3>
-  <p><strong>Key Points Discussed:</strong> {{ report.key_points_discussed }}</p>
-  <p><strong>Decisions Made:</strong> {{ report.decisions_made }}</p>
-  <p><strong>Action Items:</strong> {{ report.action_items }}</p>
+    <div class="section-title">Discussion Details</div>
+    <div class="content-box">
+      <p><strong>Key Points Discussed:</strong> {{ report.key_points_discussed }}</p>
+      <p><strong>Decisions Made:</strong> {{ report.decisions_made }}</p>
+    </div>
 
-  <h3>Attachments</h3>
-  <p><strong>Documents:</strong></p>
-  {% if documents %}
-    <ul>
-      {% for document in documents %}
-        <li><a href="{{ document.file.url }}" target="_blank">{{ document.file.name }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    No documents uploaded.
-  {% endif %}
-  <p><strong>Links:</strong> {{ report.links }}</p>
+    <div class="section-title">Attachments</div>
+    <div class="content-box">
+      <p><strong>Documents:</strong></p>
+      {% if documents %}
+        <ul>
+          {% for document in documents %}
+            <li><a href="{{ document.file.url }}" target="_blank">{{ document.file.name }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No documents uploaded.</p>
+      {% endif %}
+      <p><strong>Links:</strong> {{ report.links }}</p>
+    </div>
 
-  <h3>Follow-Up</h3>
-  <p><strong>Next Meeting:</strong> {{ report.next_meeting }}</p>
-  <p><strong>Additional Notes:</strong> {{ report.additional_notes }}</p>
+    <div class="section-title">Follow-Up</div>
+    <div class="content-box">
+      <p><strong>Next Meeting:</strong> {{ report.next_meeting }}</p>
+      <p><strong>Additional Notes:</strong> {{ report.additional_notes }}</p>
+    </div>
 
-  <a href="{% url 'meeting_report_list' %}" class="btn btn-secondary">Back to List</a>
+    <a href="{% url 'meeting_report_list' %}" class="btn btn-secondary">Back to List</a>
+  </div>
+
+  <!-- Include Bootstrap JS for interactions -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

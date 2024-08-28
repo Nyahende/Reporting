@@ -1,40 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inspection Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for contrast */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        }
+        .container {
+            margin-top: 30px;
+            background-color: #ffffff; /* White background for content area */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 20px;
+        }
+        .card-header {
+            background-color: #007bff; /* Primary color for header */
+            color: #fff;
+            border-bottom: 1px solid #007bff; /* Slight border for separation */
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-footer {
+            background-color: #f1f1f1;
+            border-top: 1px solid #e0e0e0; /* Light border for footer */
+            padding: 15px;
+        }
+        .btn-custom {
+            background-color: #17a2b8; /* Custom button color */
+            color: #fff;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #138496; /* Darker shade on hover */
+            color: #fff;
+        }
+        h2 {
+            color: #007bff; /* Primary color for headings */
+            font-size: 2rem;
+        }
+        h3 {
+            border-bottom: 2px solid #e0e0e0; /* Underline for section headings */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #343a40; /* Darker text color for readability */
+        }
+        p {
+            font-size: 1rem;
+            color: #495057; /* Darker text color for better readability */
+        }
+        strong {
+            color: #007bff; /* Primary color for labels */
+        }
+        .btn-back {
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-    <h2>Inspection Details</h2>
-    
-    <h3>General Information</h3>
-    <p><strong>Inspection Date:</strong> {{ inspection.inspection_date }}</p>
-    <p><strong>Inspection Time:</strong> {{ inspection.inspection_time }}</p>
-    <p><strong>Location:</strong> {{ inspection.get_location_display }}</p>
-    <p><strong>Inspector Name:</strong> {{ inspection.inspector_name }}</p>
-    
-    <h3>Details of Inspected Items</h3>
-    <p><strong>Item Description:</strong> {{ inspection.item_description }}</p>
-    <p><strong>Origin:</strong> {{ inspection.origin }}</p>
-    <p><strong>Quantity:</strong> {{ inspection.quantity }}</p>
-    <p><strong>Condition of Items:</strong> {{ inspection.condition_of_items }}</p>
-    
-    <h3>Inspection Findings</h3>
-    <p><strong>Pests/Diseases Detected:</strong> {{ inspection.pests_diseases_detected }}</p>
-    <p><strong>Laboratory Analysis Required:</strong> {{ inspection.laboratory_analysis_required }}</p>
-    <p><strong>Sample Collected:</strong> {{ inspection.sample_collected }}</p>
-    <p><strong>Quarantine Required:</strong> {{ inspection.quarantine_required }}</p>
-    <p><strong>Items Seized:</strong> {{ inspection.items_seized }}</p>
-    
-    <h3>Actions Taken</h3>
-    <p><strong>Immediate Actions:</strong> {{ inspection.immediate_actions }}</p>
-    <p><strong>Follow-up Required:</strong> {{ inspection.follow_up_required }}</p>
-    <p><strong>Follow-up Date:</strong> {{ inspection.follow_up_date }}</p>
-    
-    <h3>Additional Observations</h3>
-    <p><strong>Challenges Encountered:</strong> {{ inspection.challenges_encountered }}</p>
-    <p><strong>Additional Notes:</strong> {{ inspection.additional_notes }}</p>
-    <p><strong>Recommendations for Improvement:</strong> {{ inspection.recommendations_for_improvement }}</p>
-    
-    <a href="{% url 'inspection_list' %}">Back to Inspection List</a>
+    <div class="container">
+        <h2 class="text-center">Inspection Details</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">General Information</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Inspection Date:</strong> {{ inspection.inspection_date }}</p>
+                <p><strong>Inspection Time:</strong> {{ inspection.inspection_time }}</p>
+                <p><strong>Location:</strong> {{ inspection.get_location_display }}</p>
+                <p><strong>Inspector Name:</strong> {{ inspection.inspector_name }}</p>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3 class="card-title">Details of Inspected Items</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Item Description:</strong> {{ inspection.item_description }}</p>
+                <p><strong>Origin:</strong> {{ inspection.origin }}</p>
+                <p><strong>Quantity:</strong> {{ inspection.quantity }}</p>
+                <p><strong>Condition of Items:</strong> {{ inspection.condition_of_items }}</p>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3 class="card-title">Inspection Findings</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Pests/Diseases Detected:</strong> {{ inspection.pests_diseases_detected }}</p>
+                <p><strong>Laboratory Analysis Required:</strong> {{ inspection.laboratory_analysis_required }}</p>
+                <p><strong>Sample Collected:</strong> {{ inspection.sample_collected }}</p>
+                <p><strong>Quarantine Required:</strong> {{ inspection.quarantine_required }}</p>
+                <p><strong>Items Seized:</strong> {{ inspection.items_seized }}</p>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3 class="card-title">Actions Taken</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Immediate Actions:</strong> {{ inspection.immediate_actions }}</p>
+                <p><strong>Follow-up Required:</strong> {{ inspection.follow_up_required }}</p>
+                <p><strong>Follow-up Date:</strong> {{ inspection.follow_up_date }}</p>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3 class="card-title">Additional Observations</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Challenges Encountered:</strong> {{ inspection.challenges_encountered }}</p>
+                <p><strong>Additional Notes:</strong> {{ inspection.additional_notes }}</p>
+                <p><strong>Recommendations for Improvement:</strong> {{ inspection.recommendations_for_improvement }}</p>
+            </div>
+        </div>
+
+        <a href="{% url 'inspection_list' %}" class="btn btn-custom btn-lg btn-back">Back to Inspection List</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
