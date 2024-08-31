@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['reporting-un32.onrender.com']
 
+# '
 
 # Application definition
 
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'Reporting.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
