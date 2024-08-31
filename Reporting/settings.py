@@ -29,6 +29,11 @@ ALLOWED_HOSTS = ['reporting-un32.onrender.com']
 
 # '
 
+# Add these settings if you have static files
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 # Application definition
 
 INSTALLED_APPS = [
