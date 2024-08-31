@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Details</title>
+    <title>inspection Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -65,36 +65,37 @@
 </head>
 <body>
     <div class="container">
-        <h2>Training Details</h2>
-        <h3>General Information</h3>
-        <p><strong>Date:</strong> {{ training.training_date }}</p>
-        <p><strong>Duration:</strong> {{ training.training_start_time }} - {{ training.training_end_time }}</p>
-        <p><strong>Trainer:</strong> {{ training.trainer_name }}</p>
-        <p><strong>Location:</strong> {{ training.location }}</p>
-        <p><strong>Type:</strong> {{ training.training_type }}</p>
-        <p><strong>Target Audience:</strong> {{ training.target_audience }}</p>
+        <h2>inspection Details</h2>
         
-        <h3>Training Content</h3>
-        <p><strong>Topics Covered:</strong> {{ training.training_topics }}</p>
-        <p><strong>Materials Used:</strong> {{ training.training_materials }}</p>
-        <p><strong>Methods Used:</strong> {{ training.training_methods }}</p>
-        <p><strong>Skills & Knowledge Gained:</strong> {{ training.skills_knowledge_gained }}</p>
-        <p><strong>Assessments Conducted:</strong> {{ training.assessments_conducted }}</p>
+        <p><strong>Date:</strong> {{ inspection.inspection_date }}</p>
+        <p><strong>Time:</strong> {{ inspection.inspection_time }} </p>
+        <p><strong>Location:</strong> {{ inspection.location }}</p>
+        <p><strong>Inspector Name:</strong> {{ inspection.inspector_name }}</p>
+        <p><strong>Seller name:</strong> {{ inspection.seller_name }}</p>
+        <p><strong>License Number:</strong> {{ inspection.license_number }}</p>
         
-        <h3>Training Feedback & Evaluation</h3>
-        <p><strong>Participant Feedback:</strong> {{ training.participant_feedback }}</p>
-        <p><strong>Effectiveness Evaluation:</strong> {{ training.effectiveness_evaluation }}</p>
-        <p><strong>Post-Training Follow-Up:</strong> {{ training.post_training_follow_up }}</p>
-        <p><strong>Training Impact:</strong> {{ training.training_impact }}</p>
+      
+        <p><strong>License Expire date:</strong> {{ inspection.license_expiry_date }}</p>
+        <p><strong>Contact Information:</strong> {{ inspection.contact_information }}</p>
+        <p><strong>Product List:</strong> {{ inspection.product_list }}</p>
+        <p><strong>Any Violation Detected:</strong> {{ inspection.violations_detected }}</p>
+        <p><strong>Non Compliant Products:</strong> {{ inspection.non_compliant_products }}</p>
         
-        <h3>Challenges & Recommendations</h3>
-        <p><strong>Additional Notes:</strong> {{ training.additional_notes }}</p>
-        <p><strong>Challenges Encountered:</strong> {{ training.challenges_encountered }}</p>
-        <p><strong>Recommendations:</strong> {{ training.recommendations }}</p>
+        
+        <p><strong>Corrective Actions Required:</strong> {{ inspection.corrective_actions_required }}</p>
+        <p><strong>Follow Up Needed:</strong> {{ inspection.follow_up_inspection_needed }}</p>
+        <p><strong>Follow-Up Date:</strong> {{ inspection.follow_up_date }}</p>
+        <p><strong>Penalties Issued:</strong> {{ inspection.penalties_issued }}</p>
+        
+        
+        <p><strong>Photographic Evidence:</strong> {{ inspection.photographic_evidence }}</p>
+        <p><strong>Challenges Encountered:</strong> {{ inspection.challenges_encountered }}</p>
+        <p><strong>Additional Notes:</strong> {{ inspection.additional_notes }}</p>
+        <p><strong>Recommendations for Improvement:</strong> {{ inspection.recommendations_for_improvement }}</p>
 
         <div class="btn-container">
-            <a href="{% url 'training_update' training.id %}">Edit</a>
-            <a href="{% url 'training_list' %}">Back to List</a>
+            <a href="{% url 'pesticide_inspection_update' inspection.id %}">Edit</a>
+            <a href="{% url 'pesticide_inspection_list' %}">Back to List</a>
         </div>
     </div>
 

@@ -38,14 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'FieldVisit',
-    'Inspection',
     'Meetings',
-    'Other',
     'PlantInspection',
     'PesticideInspection',
     'Training',
     'ZonalReports',
-    'Equipments',   
+    'Equipments',  
+    'home', 
 ]
 
 MIDDLEWARE = [

@@ -40,4 +40,5 @@ def update_field_visit(request, pk):
             return redirect('field_visit_report_detail', pk=visit.pk)
     else:
         form = FieldVisitReportForm(instance=visit)
-    return render(request, 'FieldVisit/update_field_visit.html', {'form': form})
+    return render(request, 'FieldVisit/field_visit_report_form.html', {'form': form, 'visit': visit})
+

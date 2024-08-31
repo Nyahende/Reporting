@@ -16,13 +16,18 @@ class ZonalReport(models.Model):
         ('tarakea', 'Tarakea'), ('kia', 'KIA'), ('tengeru', 'Tengeru'), 
         ('namanga', 'Namanga')
     ]
-    
+    ZONES = [
+        ('northernzone', 'Northern Zone'), ('easternzone', 'Eastern Zone'), ('westernzone', 'Western Zone'),
+        ('southernzone', 'Southern Zone'), ('southernhighlands', 'SOUTHERN HIGHLANDS'), ('lakezone', 'LAKE ZONE'),
+        ('centralzone', 'CENTRAL ZONE'), 
+    ]
     # General Information
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now)
     station = models.CharField(max_length=50, choices=STATIONS)
     
     # Inspector Information
+    zone = models.CharField(max_length=50, choices=ZONES)
     number_of_inspectors = models.PositiveIntegerField()
 
     # Export Certification

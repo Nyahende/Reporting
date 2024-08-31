@@ -24,7 +24,6 @@ def training_delete(request, pk):
     return render(request, 'Training/training_confirm_delete.html', {'training': training})
 
 
-
 def training_create(request):
     if request.method == 'POST':
         form = TrainingForm(request.POST)

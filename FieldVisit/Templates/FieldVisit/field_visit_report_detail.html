@@ -1,68 +1,154 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Field Visit Report Detail</title>
+    <title>Field Visit Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            color: #007bff;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        h3 {
+            margin-top: 30px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.5em;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+        p strong {
+            color: #007bff;
+            font-weight: 700;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn-container a {
+            margin: 0 15px;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .btn-container a:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .btn-container a {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+      <h1>Field Visit Report: {{ report.visit_date }}</h1>
+      <p><strong>Date:</strong> {{ report.visit_date }}</p>
+      <p><strong>Time:</strong> {{ report.visit_time_start }} - {{ report.visit_time_end }}</p>
+      <p><strong>Location:</strong> {{ report.location }}</p>
+      <p><strong>Purpose of Visit:</strong> {{ report.purpose_of_visit }}</p>
+      <p><strong>Visitors:</strong> {{ report.visitors }}</p>
+      <p><strong>Field Contact Person:</strong> {{ report.field_contact_person }}</p>
+      <p><strong>Contact Phone:</strong> {{ report.field_contact_person_phone }}</p>
     
+      <h3>Site Details</h3>
+      <p><strong>Description:</strong> {{ report.site_description }}</p>
+      <p><strong>Weather Conditions:</strong> {{ report.weather_conditions }}</p>
+      <p><strong>Accessibility:</strong> {{ report.site_accessibility }}</p>
+    
+      <h3>Observations</h3>
+      <p><strong>General Observations:</strong> {{ report.general_observations }}</p>
+      <p><strong>Plant Health Status:</strong> {{ report.plant_health_status }}</p>
+      <p><strong>Pest Activity:</strong> {{ report.pest_activity }}</p>
+      <p><strong>Soil Conditions:</strong> {{ report.soil_conditions }}</p>
+      <p><strong>Infrastructure Condition:</strong> {{ report.infrastructure_condition }}</p>
+    
+      <h3>Findings and Issues</h3>
+      <p><strong>Problems Identified:</strong> {{ report.problems_identified }}</p>
+      <p><strong>Recommendations:</strong> {{ report.recommendations }}</p>
+    
+      <h3>Actions Taken</h3>
+      <p><strong>Immediate Actions:</strong> {{ report.immediate_actions }}</p>
+      <p><strong>Follow-Up Actions:</strong> {{ report.follow_up_actions }}</p>
+      <h3>Attachments</h3>
+      <p><strong>Photos:</strong></p>
+      {% if report.photos.all %}
+        <ul>
+          {% for photo in report.photos.all %}
+            <li><img src="{{ photo.file.url }}" alt="{{ photo.description }}" style="max-width: 300px; max-height: 200px;"></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        No photos uploaded.
+      {% endif %}
+      <p><strong>Maps:</strong></p>
+      {% if report.maps.all %}
+        <ul>
+          {% for map in report.maps.all %}
+            <li><a href="{{ map.file.url }}">{{ map.description }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        No maps uploaded.
+      {% endif %}
+    
+      <h3>Additional Notes</h3>
+      <p>{{ report.additional_notes }}</p>
+      <h3>Challenges Encountered</h3>
+      <p>{{ report.challenges_encountered }}</p>
+      <h3>Next Steps</h3>
+      <p>{{ report.next_steps }}</p>
 
-  <h1>Field Visit Report: {{ report.visit_date }}</h1>
-  <p><strong>Date:</strong> {{ report.visit_date }}</p>
-  <p><strong>Time:</strong> {{ report.visit_time_start }} - {{ report.visit_time_end }}</p>
-  <p><strong>Location:</strong> {{ report.location }}</p>
-  <p><strong>Purpose of Visit:</strong> {{ report.purpose_of_visit }}</p>
-  <p><strong>Visitors:</strong> {{ report.visitors }}</p>
-  <p><strong>Field Contact Person:</strong> {{ report.field_contact_person }}</p>
-  <p><strong>Contact Phone:</strong> {{ report.field_contact_person_phone }}</p>
+        <div class="btn-container">
+          <a href="{% url 'update_field_visit' report.pk %}">Edit</a>
+            <a href="{% url 'field_visit_report_list' %}">Back to List</a>
+        </div>
+    </div>
 
-  <h3>Site Details</h3>
-  <p><strong>Description:</strong> {{ report.site_description }}</p>
-  <p><strong>Weather Conditions:</strong> {{ report.weather_conditions }}</p>
-  <p><strong>Accessibility:</strong> {{ report.site_accessibility }}</p>
-
-  <h3>Observations</h3>
-  <p><strong>General Observations:</strong> {{ report.general_observations }}</p>
-  <p><strong>Plant Health Status:</strong> {{ report.plant_health_status }}</p>
-  <p><strong>Pest Activity:</strong> {{ report.pest_activity }}</p>
-  <p><strong>Soil Conditions:</strong> {{ report.soil_conditions }}</p>
-  <p><strong>Infrastructure Condition:</strong> {{ report.infrastructure_condition }}</p>
-
-  <h3>Findings and Issues</h3>
-  <p><strong>Problems Identified:</strong> {{ report.problems_identified }}</p>
-  <p><strong>Recommendations:</strong> {{ report.recommendations }}</p>
-
-  <h3>Actions Taken</h3>
-  <p><strong>Immediate Actions:</strong> {{ report.immediate_actions }}</p>
-  <p><strong>Follow-Up Actions:</strong> {{ report.follow_up_actions }}</p>
-
-  <h3>Attachments</h3>
-  <p><strong>Photos:</strong></p>
-  {% if report.photos.all %}
-    <ul>
-      {% for photo in report.photos.all %}
-        <li><img src="{{ photo.file.url }}" alt="{{ photo.description }}" style="max-width: 300px; max-height: 200px;"></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    No photos uploaded.
-  {% endif %}
-  <p><strong>Maps:</strong></p>
-  {% if report.maps.all %}
-    <ul>
-      {% for map in report.maps.all %}
-        <li><a href="{{ map.file.url }}">{{ map.description }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    No maps uploaded.
-  {% endif %}
-
-  <h3>Additional Notes</h3>
-  <p>{{ report.additional_notes }}</p>
-  <h3>Challenges Encountered</h3>
-  <p>{{ report.challenges_encountered }}</p>
-  <h3>Next Steps</h3>
-  <p>{{ report.next_steps }}</p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

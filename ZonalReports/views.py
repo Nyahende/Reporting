@@ -8,6 +8,7 @@ import xlsxwriter
 import io
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import pandas as pd
 
 def zonal_report_create(request):
     if request.method == 'POST':
@@ -47,46 +48,8 @@ def zonal_report_filter(request):
     reports = ZonalReport.objects.filter(date__range=[start_date, end_date])
     return render(request, 'ZonalReports/zonal_report_list.html', {'reports': reports, 'filter_type': filter_type})
 
-# def generate_pdf(request, pk):
-#     report = get_object_or_404(ZonalReport, pk=pk)
-#     template = get_template('zonal_report_pdf.html')
-#     html = template.render({'report': report})
-#     pdf = HTML(string=html).write_pdf()
-#     return HttpResponse(pdf, content_type='application/pdf')
 
-def generate_excel(request, pk):
-    report = get_object_or_404(ZonalReport, pk=pk)
-    output = io.BytesIO()
-    workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-    worksheet = workbook.add_worksheet()
 
-    # Populate Excel sheet with report data
-    worksheet.write(0, 0, 'Date')
-    worksheet.write(0, 1, report.date)
-    worksheet.write(1, 0, 'Station')
-    worksheet.write(1, 1, report.station)
-    # Add more fields as needed
-
-    workbook.close()
-    output.seek(0)
-
-    response = HttpResponse(output.read(), content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = f'attachment; filename=report_{report.station}_{report.date}.xlsx'
-    return response
-
-def generate_bar_graph(request, pk):
-    report = get_object_or_404(ZonalReport, pk=pk)
-    plt.bar(['Phytosanitary Certificates Issued', 'Consignments Certified'], [report.phytosanitary_certificates_issued, report.plant_consignments_certified])
-    plt.xlabel('Categories')
-    plt.ylabel('Counts')
-    plt.title(f'Report Summary for {report.station} on {report.date}')
-
-    buffer = io.BytesIO()
-    plt.savefig(buffer, format='png')
-    plt.close()
-    buffer.seek(0)
-
-    return HttpResponse(buffer, content_type='image/png')
 
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseForbidden

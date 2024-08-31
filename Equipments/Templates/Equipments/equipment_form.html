@@ -1,17 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment form</title>
+    <title>Equipment Report Form</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            color: #343a40;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-container a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container col-md-12">
+        <h2>{{ form.instance.id|default:"New" }} Equipment Report</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                {% for field in form %}
+                    <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <div class="btn-container">
+            <a href="{% url 'zonal_report_list' %}">Back to List</a>
+        </div>
+    </div>
 
-  <h2>{{ form.instance.pk|yesno:"Edit Equipment,Create Equipment" }}</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="{% static 'Meetings/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'Meetings/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{% static 'Meetings/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/jszip/jszip.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'Meetings/plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'Meetings/dist/js/adminlte.min.js' %}"></script>
+<script src="{% static 'Meetings/dist/js/demo.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add 'form-control' class to all form fields
+            const formFields = document.querySelectorAll('input, textarea, select');
+            formFields.forEach(function(field) {
+                field.classList.add('form-control');
+            });
+        });
+    </script>
 </body>
 </html>
