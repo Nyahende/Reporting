@@ -59,14 +59,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+# os.path.join(BASE_DIR, 'templates')
 ROOT_URLCONF = 'Reporting.urls'
 
 TEMPLATES = [
-    {
+    { 
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        'DIRS': [
+                os.path.join(BASE_DIR, 'home/templates'),
+                os.path.join(BASE_DIR, 'Meetings/templates'),],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
